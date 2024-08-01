@@ -1,0 +1,28 @@
+---
+apiVersion: spaces.tanzu.vmware.com/v1alpha1
+kind: AvailabilityTarget
+metadata:
+ name: ${AVT}
+spec:
+ affinity:
+   clusterAffinity:
+     clusterSelectorTerms:
+       - matchExpressions:
+           - key: tmc.cloud.vmware.com/creator
+             operator: In
+             values:
+               - ${CREATOR}
+           - key: location
+             operator: In
+             values:
+               - ${LOCATION}
+           - key: owner
+             operator: In
+             values:
+               - ${OWNER}
+           - key: cluster
+             operator: In
+             values:
+               - ${CLUSTER_NAME}
+   clusterAntiAffinity:
+     clusterSelectorTerms: []

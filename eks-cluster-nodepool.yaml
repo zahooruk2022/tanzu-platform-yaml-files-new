@@ -1,0 +1,27 @@
+fullName:
+ credentialName: nemea-sa-eks-lcm
+ eksClusterName: ${CLUSTER_NAME}
+ name: default-node-pool
+ region: ${REGION}
+spec:
+ amiType: AL2_x86_64
+ capacityType: SPOT
+ instanceTypes:
+ - t3.xlarge
+ roleArn: arn:aws:iam::383304217212:role/worker.5891172696431603374.eks.tmc.cloud.vmware.com
+ rootDiskSize: 20
+ scalingConfig:
+   desiredSize: 3
+   maxSize: 4
+   minSize: 3
+ subnetIds:
+ - subnet-096fe26740c5a08b2
+ - subnet-064681beedc4f90ea
+ - subnet-027bb09982e9dc853
+ - subnet-0cdaccf486101acb6
+ updateConfig:
+   maxUnavailableNodes: "1"
+type:
+ kind: Nodepool
+ package: vmware.tanzu.manage.v1alpha1.ekscluster.nodepool
+ version: v1alpha1
